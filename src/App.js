@@ -59,7 +59,7 @@ function App() {
     );
   }
 
-  if (!error) {
+  if (error) {
     return (
       <div class="bg-black flex h-screen flex-col items-center divide-y-4 divide-slate-400/25">
         <div
