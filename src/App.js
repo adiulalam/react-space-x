@@ -59,13 +59,11 @@ function App() {
     );
   }
 
-  if (error) {
+  if (!error) {
     return (
       <div class="bg-black flex h-screen flex-col items-center divide-y-4 divide-slate-400/25">
-        {/* {error.message} */}
-        {/* <div class="m-auto">error</div> */}
         <div
-          class="flex m-auto p-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800"
+          class="flex m-auto p-4 text-sm rounded-lg bg-yellow-200 text-yellow-800"
           role="alert"
         >
           <svg
@@ -83,7 +81,7 @@ function App() {
           </svg>
           <span class="sr-only">Info</span>
           <div>
-            <span class="font-medium">Warning alert!</span> {error.message}
+            <span class="font-medium">Warning alert!</span> {error?.message}
           </div>
         </div>
       </div>
