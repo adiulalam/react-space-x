@@ -5,25 +5,59 @@ import { LaunchQuery } from "./connection/query";
 import { Skeleton } from "@mui/material";
 import { client } from "./connection/client";
 import { RocketsImages, ShipsImages } from "./components/slideshow";
+import _ from "lodash";
+import SearchBar from "./components/searchbar";
+import Error from "./components/error";
 
 function App() {
+  const [searchString, setSearchString] = useState("");
   const [fullyLoaded, setFullyLoaded] = useState(false);
-  const { data, networkStatus, error, fetchMore, variables } = useQuery(
-    LaunchQuery,
-    {
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await refetch({
+      variables: {
+        mission_name: e.target.value,
+      },
+    });
+  };
+
+  const handleOnChange = (e) => {
+    setSearchString(e.target.value);
+  };
+
+  const { data, networkStatus, error, fetchMore, variables, refetch, loading } =
+    useQuery(LaunchQuery, {
       client,
       notifyOnNetworkStatusChange: true,
       variables: {
         offset: 0,
         limit: 10,
+        mission_name: searchString,
       },
-    }
-  );
+    });
 
-  if (networkStatus === NetworkStatus.loading) {
+  if (networkStatus === NetworkStatus.loading || loading) {
     return (
       <div class="bg-black flex flex-col items-center divide-y-4 divide-slate-400/25">
-        {[1, 2, 3].map((item) => (
+        {networkStatus === NetworkStatus.loading ? (
+          <div class="lg:flex sm:md:block max-w-5xl rounded py-5 justify-between mx-2">
+            <Skeleton
+              sx={{ bgcolor: "grey.400", width: { sm: 400, md: 800 } }}
+              variant="rounded"
+              height={60}
+              animation="wave"
+            />
+          </div>
+        ) : (
+          <SearchBar
+            searchString={searchString}
+            handleOnChange={handleOnChange}
+            handleSubmit={handleSubmit}
+          />
+        )}
+
+        {[1, 2, 3].map(() => (
           <div class="lg:flex sm:md:block max-w-5xl rounded py-5 justify-between mx-2">
             <div class="p-2 max-w-2xl">
               <Skeleton
@@ -60,37 +94,22 @@ function App() {
   }
 
   if (error) {
-    return (
-      <div class="bg-black flex h-screen flex-col items-center divide-y-4 divide-slate-400/25">
-        <div
-          class="flex m-auto p-4 text-sm rounded-lg bg-yellow-200 text-yellow-800"
-          role="alert"
-        >
-          <svg
-            aria-hidden="true"
-            class="flex-shrink-0 inline w-5 h-5 mr-3"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-              clip-rule="evenodd"
-            ></path>
-          </svg>
-          <span class="sr-only">Info</span>
-          <div>
-            <span class="font-medium">Warning alert!</span> {error?.message}
-          </div>
-        </div>
-      </div>
-    );
+    return <Error {...error} />;
   }
 
   return (
     <>
-      <div class="bg-black flex flex-col items-center divide-y-4 divide-slate-400/25">
+      <div
+        class={`bg-black ${
+          _.isEmpty(data?.launches) ? "h-screen" : ""
+        } flex flex-col items-center divide-y-4 divide-slate-400/25`}
+      >
+        <SearchBar
+          searchString={searchString}
+          handleOnChange={handleOnChange}
+          handleSubmit={handleSubmit}
+        />
+
         {data?.launches?.map((launch) => (
           <div class="lg:flex sm:md:block max-w-5xl rounded py-5 justify-between mx-2">
             <div class="p-2 max-w-2xl">

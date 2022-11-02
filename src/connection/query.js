@@ -1,12 +1,13 @@
 import { gql } from "@apollo/client";
 
 export const LaunchQuery = gql`
-  query ListLaunches($offset: Int!, $limit: Int!) {
+  query ListLaunches($offset: Int!, $limit: Int!, $mission_name: String!) {
     launches: launchesPast(
       offset: $offset
       limit: $limit
       sort: "launch_date_utc"
       order: "desc"
+      find: { mission_name: $mission_name }
     ) {
       id
       launch_date_utc
