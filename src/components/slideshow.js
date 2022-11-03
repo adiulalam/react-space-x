@@ -2,7 +2,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 const _ = require("lodash");
 
-export const RocketsImages = (links) => (
+export const RocketSlideshow = (links) => (
   <>
     {links?.images?.flickr_images?.length > 1 ? (
       <Carousel
@@ -43,7 +43,7 @@ export const RocketsImages = (links) => (
   </>
 );
 
-export const ShipsImages = (links) => (
+export const ShipSlideshow = (links) => (
   <>
     {links?.images?.length > 1 ? (
       <Carousel
