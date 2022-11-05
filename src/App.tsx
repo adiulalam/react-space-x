@@ -2,12 +2,12 @@ import { NetworkStatus, useQuery } from "@apollo/client";
 import { useState } from "react";
 import { InView } from "react-intersection-observer";
 import { LaunchQuery } from "./connection/query";
-import { Skeleton } from "@mui/material";
 import { client } from "./connection/client";
 import SearchBar from "./components/searchbar";
 import Error from "./components/error";
 import Card from "./components/card";
 import React from "react";
+import { CardSkeleton, SearchSkeleton } from "./components/skeleton";
 const _ = require("lodash");
 
 function App() {
@@ -43,14 +43,7 @@ function App() {
     return (
       <div className="bg-black flex flex-col items-center divide-y-4 divide-slate-400/25">
         {networkStatus === NetworkStatus.loading ? (
-          <div className="lg:flex sm:md:block max-w-5xl rounded py-5 justify-between mx-2">
-            <Skeleton
-              sx={{ bgcolor: "grey.400", width: { sm: 400, md: 800 } }}
-              variant="rounded"
-              height={60}
-              animation="wave"
-            />
-          </div>
+          <SearchSkeleton />
         ) : (
           <SearchBar
             searchString={searchString}
@@ -60,36 +53,7 @@ function App() {
         )}
 
         {[1, 2, 3].map(() => (
-          <div className="lg:flex sm:md:block max-w-5xl rounded py-5 justify-between mx-2">
-            <div className="p-2 max-w-2xl">
-              <Skeleton
-                sx={{ bgcolor: "grey.400" }}
-                variant="rounded"
-                width={400}
-                height={200}
-                animation="wave"
-              />
-
-              <div className="flex py-2">
-                <Skeleton
-                  sx={{ bgcolor: "grey.400" }}
-                  variant="rounded"
-                  width={400}
-                  height={80}
-                  animation="wave"
-                />
-              </div>
-            </div>
-            <div className="p-2 max-w-2xl">
-              <Skeleton
-                sx={{ bgcolor: "grey.400" }}
-                variant="rounded"
-                width={400}
-                height={200}
-                animation="wave"
-              />
-            </div>
-          </div>
+          <CardSkeleton />
         ))}
       </div>
     );
