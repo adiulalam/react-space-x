@@ -1,8 +1,9 @@
+import React from 'react'
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 const _ = require("lodash");
 
-export const RocketSlideshow = (links) => (
+export const RocketSlideshow = (links:any) => (
   <>
     {links?.images?.flickr_images?.length > 1 ? (
       <Carousel
@@ -12,18 +13,18 @@ export const RocketSlideshow = (links) => (
         emulateTouch={true}
         autoPlay
         axis="horizontal"
-        interval="5000"
-        transitionTime="1000"
+        interval={5000}
+        transitionTime={1000}
         infiniteLoop
       >
-        {links?.images?.flickr_images?.map((image) => (
+        {links?.images?.flickr_images?.map((image: any) => (
           <div>
             <img src={image} alt="rocket" />
           </div>
         ))}
       </Carousel>
     ) : links?.images?.flickr_images?.length === 1 ? (
-      links?.images?.flickr_images?.map((image) => (
+      links?.images?.flickr_images?.map((image:any) => (
         <div>
           <img src={image} alt="rocket" />
         </div>
@@ -43,7 +44,7 @@ export const RocketSlideshow = (links) => (
   </>
 );
 
-export const ShipSlideshow = (links) => (
+export const ShipSlideshow = (links:any) => (
   <>
     {links?.images?.length > 1 ? (
       <Carousel
@@ -53,11 +54,11 @@ export const ShipSlideshow = (links) => (
         emulateTouch={true}
         autoPlay
         axis="horizontal"
-        interval="5000"
-        transitionTime="1000"
+        interval={5000}
+        transitionTime={1000}
         infiniteLoop
       >
-        {links?.images?.map((ship_image) => (
+        {links?.images?.map((ship_image:any) => (
           <div>
             <img src={ship_image?.image} alt="rocket" />
             <p className="legend">{`${ship_image?.name} ${
@@ -67,10 +68,10 @@ export const ShipSlideshow = (links) => (
         ))}
       </Carousel>
     ) : links?.images?.length === 1 ? (
-      links?.images?.map((ship_image) => (
+      links?.images?.map((ship_image:any) => (
         <div>
           <img src={ship_image?.image} alt="rocket" />
-          <p className="legend" class="text-white">{`${ship_image?.name} ${
+          <p className="legend text-white" >{`${ship_image?.name} ${
             ship_image?.year_built ? `(${ship_image?.year_built})` : ""
           }`}</p>
         </div>

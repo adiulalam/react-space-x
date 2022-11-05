@@ -1,12 +1,14 @@
-const SearchBar = ({ searchString, handleSubmit, handleOnChange }) => {
+import React from 'react'
+
+const SearchBar = ({ searchString, handleSubmit, handleOnChange} : { searchString:any, handleSubmit:any, handleOnChange:any }) => {
   return (
     <>
-      <div class="lg:flex sm:md:block max-w-sm lg:max-w-5xl rounded py-5 justify-between mx-2">
-        <div class=" flex items-center w-full h-12  rounded-lg focus-within:shadow-lg bg-gray-700 overflow-hidden">
-          <div class="grid place-items-center h-full w-12 text-gray-300 p-2">
+      <div className="lg:flex sm:md:block max-w-sm lg:max-w-5xl rounded py-5 justify-between mx-2">
+        <div className=" flex items-center w-full h-12  rounded-lg focus-within:shadow-lg bg-gray-700 overflow-hidden">
+          <div className="grid place-items-center h-full w-12 text-gray-300 p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
+              className="h-6 w-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -21,7 +23,7 @@ const SearchBar = ({ searchString, handleSubmit, handleOnChange }) => {
           </div>
           <form onSubmit={(e) => handleSubmit(e)}>
             <input
-              class="flex w-screen h-screen outline-none text-sm text-white bg-gray-700 overflow-hidden"
+              className="flex w-screen h-screen outline-none text-sm text-white bg-gray-700 overflow-hidden"
               type="text"
               id="search"
               placeholder="Search missions.."

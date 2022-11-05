@@ -4,25 +4,28 @@ import { InView } from "react-intersection-observer";
 import { LaunchQuery } from "./connection/query";
 import { Skeleton } from "@mui/material";
 import { client } from "./connection/client";
-import _ from "lodash";
 import SearchBar from "./components/searchbar";
 import Error from "./components/error";
 import Card from "./components/card";
+import React from "react";
+// import _ from "lodash";
+const _ = require("lodash");
 
 function App() {
   const [searchString, setSearchString] = useState("");
   const [fullyLoaded, setFullyLoaded] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await refetch({
+  const handleSubmit = async (e: any) => {
+    const variable: any = {
       variables: {
-        mission_name: e.target.value,
+        mission_name: e?.target?.value,
       },
-    });
+    };
+    e.preventDefault();
+    await refetch(variable);
   };
 
-  const handleOnChange = (e) => {
+  const handleOnChange = (e: any) => {
     setSearchString(e.target.value);
   };
 
@@ -39,9 +42,9 @@ function App() {
 
   if (networkStatus === NetworkStatus.loading || loading) {
     return (
-      <div class="bg-black flex flex-col items-center divide-y-4 divide-slate-400/25">
+      <div className="bg-black flex flex-col items-center divide-y-4 divide-slate-400/25">
         {networkStatus === NetworkStatus.loading ? (
-          <div class="lg:flex sm:md:block max-w-5xl rounded py-5 justify-between mx-2">
+          <div className="lg:flex sm:md:block max-w-5xl rounded py-5 justify-between mx-2">
             <Skeleton
               sx={{ bgcolor: "grey.400", width: { sm: 400, md: 800 } }}
               variant="rounded"
@@ -58,8 +61,8 @@ function App() {
         )}
 
         {[1, 2, 3].map(() => (
-          <div class="lg:flex sm:md:block max-w-5xl rounded py-5 justify-between mx-2">
-            <div class="p-2 max-w-2xl">
+          <div className="lg:flex sm:md:block max-w-5xl rounded py-5 justify-between mx-2">
+            <div className="p-2 max-w-2xl">
               <Skeleton
                 sx={{ bgcolor: "grey.400" }}
                 variant="rounded"
@@ -68,7 +71,7 @@ function App() {
                 animation="wave"
               />
 
-              <div class="flex py-2">
+              <div className="flex py-2">
                 <Skeleton
                   sx={{ bgcolor: "grey.400" }}
                   variant="rounded"
@@ -78,7 +81,7 @@ function App() {
                 />
               </div>
             </div>
-            <div class="p-2 max-w-2xl">
+            <div className="p-2 max-w-2xl">
               <Skeleton
                 sx={{ bgcolor: "grey.400" }}
                 variant="rounded"
@@ -100,7 +103,7 @@ function App() {
   return (
     <>
       <div
-        class={`bg-black ${
+        className={`bg-black ${
           _.isEmpty(data?.launches) ? "h-screen" : ""
         } flex flex-col items-center divide-y-4 divide-slate-400/25`}
       >
@@ -110,13 +113,13 @@ function App() {
           handleSubmit={handleSubmit}
         />
 
-        {data?.launches?.map((launch) => (
+        {data?.launches?.map((launch: any) => (
           <Card {...launch} />
         ))}
       </div>
 
       {networkStatus !== NetworkStatus.fetchMore &&
-        data?.launches?.length % variables?.limit === 0 &&
+        data?.launches?.length % (variables?.limit ?? 0) === 0 &&
         !fullyLoaded && (
           <InView
             onChange={async (inView) => {

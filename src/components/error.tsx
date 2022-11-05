@@ -1,13 +1,15 @@
-const Error = ({ message }) => {
+import React from 'react'
+
+const Error = ({ message }: { message:any }) => {
   return (
-    <div class="bg-black flex h-screen flex-col items-center divide-y-4 divide-slate-400/25">
+    <div className="bg-black flex h-screen flex-col items-center divide-y-4 divide-slate-400/25">
       <div
-        class="flex m-auto p-4 text-sm rounded-lg bg-yellow-200 text-yellow-800"
+        className="flex m-auto p-4 text-sm rounded-lg bg-yellow-200 text-yellow-800"
         role="alert"
       >
         <svg
           aria-hidden="true"
-          class="flex-shrink-0 inline w-5 h-5 mr-3"
+          className="flex-shrink-0 inline w-5 h-5 mr-3"
           fill="currentColor"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
@@ -18,9 +20,9 @@ const Error = ({ message }) => {
             clip-rule="evenodd"
           ></path>
         </svg>
-        <span class="sr-only">Info</span>
+        <span className="sr-only">Info</span>
         <div>
-          <span class="font-medium">Warning alert!</span> {message ?? ""}
+          <span className="font-medium">Warning alert!</span> {message ?? ""}
         </div>
       </div>
     </div>
