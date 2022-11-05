@@ -8,7 +8,6 @@ import SearchBar from "./components/searchbar";
 import Error from "./components/error";
 import Card from "./components/card";
 import React from "react";
-// import _ from "lodash";
 const _ = require("lodash");
 
 function App() {
