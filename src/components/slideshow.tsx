@@ -36,7 +36,7 @@ export const RocketSlideshow = (links: any) => (
     ) : (
       <div>
         <img
-          src="https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/no-image.png"
+          src={require("../assets/images/image_not_available.png")}
           alt="not found"
         />
       </div>
@@ -79,7 +79,7 @@ export const ShipSlideshow = (links: any) => (
     ) : (
       <div>
         <img
-          src="https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/no-image.png"
+          src={require("../assets/images/image_not_available.png")}
           alt="not found"
         />
       </div>
