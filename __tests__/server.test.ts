@@ -14,6 +14,7 @@ const testConnection: any = async () => {
 
 it("Runs a test against Space-X graphql", async () => {
   const result = await testConnection();
+
   expect(result).toBeTruthy();
   expect(result).toHaveProperty("data");
   expect(result.data).toHaveProperty("launches");
