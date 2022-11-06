@@ -12,7 +12,7 @@ const testConnection: any = async () => {
   });
 };
 
-it("runs a test against space-x graphql", async () => {
+it("Runs a test against Space-X graphql", async () => {
   const result = await testConnection();
   expect(result).toBeTruthy();
   expect(result).toHaveProperty("data");
