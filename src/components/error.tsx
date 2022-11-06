@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 
-const Error = ({ message }: { message:any }) => {
+const Error = ({ message }: { message: any }) => {
   return (
     <div className="bg-black flex h-screen flex-col items-center divide-y-4 divide-slate-400/25">
       <div

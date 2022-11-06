@@ -1,6 +1,14 @@
-import React from 'react'
+import React from "react";
 
-const SearchBar = ({ searchString, handleSubmit, handleOnChange} : { searchString:any, handleSubmit:any, handleOnChange:any }) => {
+const SearchBar = ({
+  searchString,
+  handleSubmit,
+  handleOnChange,
+}: {
+  searchString: any;
+  handleSubmit: any;
+  handleOnChange: any;
+}) => {
   return (
     <>
       <div className="lg:flex sm:md:block max-w-sm lg:max-w-5xl rounded py-5 justify-between mx-2">

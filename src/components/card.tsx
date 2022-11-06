@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 import { RocketSlideshow, ShipSlideshow } from "./slideshow";
 
 const Card = (launch: any) => {
-  console.log(launch)
+  console.log(launch);
   return (
     <>
       <div className="lg:flex sm:md:block max-w-5xl rounded py-5 justify-between mx-2">

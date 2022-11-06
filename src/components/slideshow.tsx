@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 const _ = require("lodash");
 
-export const RocketSlideshow = (links:any) => (
+export const RocketSlideshow = (links: any) => (
   <>
     {links?.images?.flickr_images?.length > 1 ? (
       <Carousel
@@ -24,7 +24,7 @@ export const RocketSlideshow = (links:any) => (
         ))}
       </Carousel>
     ) : links?.images?.flickr_images?.length === 1 ? (
-      links?.images?.flickr_images?.map((image:any) => (
+      links?.images?.flickr_images?.map((image: any) => (
         <div>
           <img src={image} alt="rocket" />
         </div>
@@ -44,7 +44,7 @@ export const RocketSlideshow = (links:any) => (
   </>
 );
 
-export const ShipSlideshow = (links:any) => (
+export const ShipSlideshow = (links: any) => (
   <>
     {links?.images?.length > 1 ? (
       <Carousel
@@ -58,7 +58,7 @@ export const ShipSlideshow = (links:any) => (
         transitionTime={1000}
         infiniteLoop
       >
-        {links?.images?.map((ship_image:any) => (
+        {links?.images?.map((ship_image: any) => (
           <div>
             <img src={ship_image?.image} alt="rocket" />
             <p className="legend">{`${ship_image?.name} ${
@@ -68,10 +68,10 @@ export const ShipSlideshow = (links:any) => (
         ))}
       </Carousel>
     ) : links?.images?.length === 1 ? (
-      links?.images?.map((ship_image:any) => (
+      links?.images?.map((ship_image: any) => (
         <div>
           <img src={ship_image?.image} alt="rocket" />
-          <p className="legend text-white" >{`${ship_image?.name} ${
+          <p className="legend text-white">{`${ship_image?.name} ${
             ship_image?.year_built ? `(${ship_image?.year_built})` : ""
           }`}</p>
         </div>
