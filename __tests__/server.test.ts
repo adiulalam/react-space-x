@@ -16,6 +16,6 @@ it("Runs a test against Space-X graphql", async () => {
   const result = await testConnection();
   expect(result).toBeTruthy();
   expect(result).toHaveProperty("data");
-  expect(result.errors).toBeFalsy();
   expect(result.data).toHaveProperty("launches");
+  expect(result.errors).toBeFalsy();
 });
