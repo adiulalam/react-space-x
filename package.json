@@ -28,7 +28,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest ./__tests__ && npm build",
+    "test": "jest ./__tests__ && npm run build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
