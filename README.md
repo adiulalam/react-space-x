@@ -1,6 +1,6 @@
 # Space-X
 
-Space-X website which utilizes the offical GraphQL Space-X API.
+Space-X website which utilizes the official GraphQL Space-X API.
 
 ## Description
 
