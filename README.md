@@ -1,4 +1,4 @@
-# Ideas Website
+# Space-X
 
 Space-X website which utilizes the offical GraphQL Space-X API.
 
