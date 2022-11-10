@@ -8,17 +8,19 @@ This is a website for seeing all the launches, missions and ships which were lau
 <br>
 The website has two distinguished slideshows which shows the launches and the ships.
 <br>
-Website was created using JavaScript, TypeScript, React, Apollo Client, and Tailwind CSS.
+Website was created using JavaScript, TypeScript, React, Apollo Client, Jest and Tailwind CSS.
 
 ## Getting Started
 
 ### Installing
-
+```
+npm test 
+```
 ```
 npm start 
 ```
 ```
-npm run build
+npm build
 ```
 
 ## Authors
